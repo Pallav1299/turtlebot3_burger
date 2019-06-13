@@ -27,7 +27,7 @@ void callback(const std_msgs::String& data)
   String key = data.data;
   if (key=="w")
   {
-    forward();
+    forward(); 
   }
 
   else if (key=="x")
@@ -86,12 +86,12 @@ void backward(){
 }
 
 void right(){
-  float goal_velocity[2] = {0,2};
+  float goal_velocity[2] = {0,-2};
   motor_driver.controlMotor(WHEEL_RADIUS, WHEEL_SEPARATION, goal_velocity);
 }
 
 void left(){
-  float goal_velocity[2] = {0,-2};
+  float goal_velocity[2] = {0,2};
   motor_driver.controlMotor(WHEEL_RADIUS, WHEEL_SEPARATION, goal_velocity);
 }
 
