@@ -1,0 +1,10 @@
+<launch>
+	<arg name="model" default="$(env TURTLEBOT3_MODEL)" doc="model type [burger, waffle, waffle_pi]"/>
+	<param name="robot_description" textfile="$(find turtlebot3_visualize)/turtlebot3_description/urdf/turtlebot3_burger.urdf.xacro" />
+	<param name="use_gui" value="false"/>
+
+	<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
+
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find turtlebot3_visualize)/turtlebot3_description/rviz/model.rviz" required="true" />
+</launch>
