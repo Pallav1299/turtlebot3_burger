@@ -17,41 +17,21 @@
 /* Authors: Yoonseok Pyo, Leon Jung, Darby Lim, HanCheol Cho, Gilbert */
 #include <ros.h>
 #include "turtlebot3.h"
-#include <std_msgs/String.h>
+#include <geometry_msgs/Twist.h>
 
 
 ros::NodeHandle nh;
 
-void callback(const std_msgs::String& data)
+void velocity_callback(const geometry_msgs::Twist& cmd_vel_msg)
 {
-  String key = data.data;
-  if (key=="w")
-  {
-    forward(); 
-  }
+  goal_velocity_from_cmd[LINEAR]  = cmd_vel_msg.linear.x;
+  goal_velocity_from_cmd[ANGULAR] = cmd_vel_msg.angular.z;
 
-  else if (key=="x")
-  {
-    backward();
-  }
-
-  else if (key=="d")
-  {
-    right();
-  }
-
-  else if (key=="a")
-  {
-    left();
-  }
-
-  else if (key=="s")
-  {
-    Stop();
-  }
+  goal_velocity_from_cmd[LINEAR]  = constrain(goal_velocity_from_cmd[LINEAR],  MIN_LINEAR_VELOCITY, MAX_LINEAR_VELOCITY);
+  goal_velocity_from_cmd[ANGULAR] = constrain(goal_velocity_from_cmd[ANGULAR], MIN_ANGULAR_VELOCITY, MAX_ANGULAR_VELOCITY);
 }
 
-ros::Subscriber<std_msgs::String> sub("teleop_key", &callback);
+ros::Subscriber<geometry_msgs::Twist> vel_control_sub("velocity_control", &velocity_callback);
 
 
 Turtlebot3MotorDriver motor_driver;
@@ -62,19 +42,32 @@ Turtlebot3MotorDriver motor_driver;
 void setup()
 {
   nh.initNode();
-  nh.subscribe(sub);
+  nh.subscribe(vel_control_sub);
   motor_driver.init(NAME);
 }
 
 void loop()
 {
+  updateGoalVelocity();
+  motor_driver.controlMotor(WHEEL_RADIUS, WHEEL_SEPARATION, goal_velocity);
+  
   nh.spinOnce();
   delay(10);
 
   }
 
+/*******************************************************************************
+* Update Goal Velocity
+*******************************************************************************/
+void updateGoalVelocity(void)
+{
+  goal_velocity[LINEAR]  = goal_velocity_from_button[LINEAR]  + goal_velocity_from_cmd[LINEAR];
+  goal_velocity[ANGULAR] = goal_velocity_from_button[ANGULAR] + goal_velocity_from_cmd[ANGULAR];
+
+}
 
 
+/*
 void forward(){
   float goal_velocity[2] = {0.5,0};
   motor_driver.controlMotor(WHEEL_RADIUS, WHEEL_SEPARATION, goal_velocity);
@@ -99,3 +92,4 @@ void Stop(){
   float goal_velocity[2] = {0,0};
   motor_driver.controlMotor(WHEEL_RADIUS, WHEEL_SEPARATION, goal_velocity);
 }
+*/
