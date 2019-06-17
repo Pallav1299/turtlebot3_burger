@@ -31,7 +31,7 @@ void velocity_callback(const geometry_msgs::Twist& cmd_vel_msg)
   goal_velocity_from_cmd[ANGULAR] = constrain(goal_velocity_from_cmd[ANGULAR], MIN_ANGULAR_VELOCITY, MAX_ANGULAR_VELOCITY);
 }
 
-ros::Subscriber<geometry_msgs::Twist> vel_control_sub("velocity_control", &velocity_callback);
+ros::Subscriber<geometry_msgs::Twist> vel_control_sub("cmd_vel", &velocity_callback);
 
 
 Turtlebot3MotorDriver motor_driver;
