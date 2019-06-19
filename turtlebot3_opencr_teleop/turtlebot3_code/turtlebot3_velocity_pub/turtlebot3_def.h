@@ -37,7 +37,7 @@
 #define WHEEL_NUM                        2
 #define LINEAR                           0
 #define ANGULAR                          1
-#define CONTROL_MOTOR_SPEED_FREQUENCY          30   //hz
+#define CONTROL_MOTOR_SPEED_FREQUENCY    30   //hz
 
 
 /*******************************************************************************
@@ -55,9 +55,7 @@ double  last_velocity[WHEEL_NUM]  = {0.0, 0.0};
 /*******************************************************************************
 * Declaration for controllers
 *******************************************************************************/
-Turtlebot3Controller controllers;
 float goal_velocity[WHEEL_NUM] = {0.0, 0.0};
-float goal_velocity_from_button[WHEEL_NUM] = {0.0, 0.0};
 float goal_velocity_from_cmd[WHEEL_NUM] = {0.0, 0.0};
 
 

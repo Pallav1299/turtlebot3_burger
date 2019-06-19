@@ -61,35 +61,7 @@ void loop()
 *******************************************************************************/
 void updateGoalVelocity(void)
 {
-  goal_velocity[LINEAR]  = goal_velocity_from_button[LINEAR]  + goal_velocity_from_cmd[LINEAR];
-  goal_velocity[ANGULAR] = goal_velocity_from_button[ANGULAR] + goal_velocity_from_cmd[ANGULAR];
+  goal_velocity[LINEAR]  = goal_velocity_from_cmd[LINEAR];
+  goal_velocity[ANGULAR] = goal_velocity_from_cmd[ANGULAR];
 
 }
-
-
-/*
-void forward(){
-  float goal_velocity[2] = {0.5,0};
-  motor_driver.controlMotor(WHEEL_RADIUS, WHEEL_SEPARATION, goal_velocity);
-}
-
-void backward(){
-  float goal_velocity[2] = {-0.5,0};
-  motor_driver.controlMotor(WHEEL_RADIUS, WHEEL_SEPARATION, goal_velocity);
-}
-
-void right(){
-  float goal_velocity[2] = {0,-2};
-  motor_driver.controlMotor(WHEEL_RADIUS, WHEEL_SEPARATION, goal_velocity);
-}
-
-void left(){
-  float goal_velocity[2] = {0,2};
-  motor_driver.controlMotor(WHEEL_RADIUS, WHEEL_SEPARATION, goal_velocity);
-}
-
-void Stop(){
-  float goal_velocity[2] = {0,0};
-  motor_driver.controlMotor(WHEEL_RADIUS, WHEEL_SEPARATION, goal_velocity);
-}
-*/
