@@ -1,3 +1,5 @@
+#include "turtlebot3.h"
+
 #include <ros.h>
 #include <ros/time.h>
 #include <tf/transform_broadcaster.h>
@@ -147,8 +149,8 @@ void rate(unsigned long frequency)
     }
     //return true;
   }
-  unsigned long track = millis();
-  while((millis() - track > sleep_time)){
+  //unsigned long track = millis();
+  while((millis()<sleep_time*1000)){
     }
    //delay(sleep_time *1000);
 }

@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>turtlebot3_opencr_teleop</name>
+  <name>turtlebot3_control_teleop</name>
   <version>0.0.0</version>
-  <description>The turtlebot3_opencr_teleop package</description>
+  <description>The turtlebot3_control_teleop package</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag -->
   <!-- Example:  -->
