@@ -34,7 +34,29 @@
 #define MIN_LINEAR_VELOCITY              -MAX_LINEAR_VELOCITY  
 #define MIN_ANGULAR_VELOCITY             -MAX_ANGULAR_VELOCITY 
 
-//ros::NodeHandle nh;
-//ros::Subscriber<geometry_msgs::Twist> cmd_vel_sub("cmd_vel", commandVelocityCallback);
+#define WHEEL_NUM                        2
+#define LINEAR                           0
+#define ANGULAR                          1
+#define CONTROL_MOTOR_SPEED_FREQUENCY    30   //hz
+
+
+/*******************************************************************************
+* Calculation for odometry
+*******************************************************************************/
+bool init_encoder = true;
+int32_t last_diff_tick[WHEEL_NUM] = {0, 0};
+double  last_rad[WHEEL_NUM]       = {0.0, 0.0};
+
+/*******************************************************************************
+* Update Joint State
+*******************************************************************************/
+double  last_velocity[WHEEL_NUM]  = {0.0, 0.0};
+
+/*******************************************************************************
+* Declaration for controllers
+*******************************************************************************/
+float goal_velocity[WHEEL_NUM] = {0.0, 0.0};
+float goal_velocity_from_cmd[WHEEL_NUM] = {0.0, 0.0};
+
 
 #endif  //TURTLEBOT3_BURGER_H_
