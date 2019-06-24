@@ -202,5 +202,5 @@ include_directories(
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
 
-add_executable(odom script/odom.cpp)
-target_link_libraries(odom ${catkin_LIBRARIES})
+add_executable(turtlebot3_upfront script/turtlebot3_upfront.cpp)
+target_link_libraries(turtlebot3_upfront ${catkin_LIBRARIES})

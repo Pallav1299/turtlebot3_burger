@@ -1,5 +1,5 @@
-#ifndef TURTLEBOT3_FAKE_H_
-#define TURTLEBOT3_FAKE_H_
+#ifndef TURTLEBOT3_UPFRONT_H_
+#define TURTLEBOT3_UPFRONT_H_
 
 #include <math.h>
 
@@ -14,9 +14,10 @@
 #include <tf/transform_broadcaster.h>
 #include <nav_msgs/Odometry.h>
 
-#include <turtlebot3_msgs/SensorState.h>
+//#include turtlebot3_msgs/SensorState.h>
+#include "/home/pallav/ros_work/src/turtlebot3_burger/turtlebot3_upfront/include/turtlebot3_upfront/SensorState.h"
 
-#include "turtlebot3_fake.h"
+#include "turtlebot3_upfront.h"
 
 #define WHEEL_RADIUS                    0.033     // meter
 
@@ -37,11 +38,12 @@
 #define TORQUE_ENABLE                   1       // Value for enabling the torque of motor
 #define TORQUE_DISABLE                  0       // Value for disabling the torque of motor
 
-class Turtlebot3Fake
+
+class Turtlebot3Upfront
 {
  public:
-  Turtlebot3Fake();
-  ~Turtlebot3Fake();
+  Turtlebot3Upfront();
+  ~Turtlebot3Upfront();
   bool init();
   bool update();
 
@@ -55,7 +57,7 @@ class Turtlebot3Fake
 
   // ROS Time
   ros::Time last_cmd_vel_time;
-  ros::Time prev_update_time;
+  ros::Time prev_time;
 
   // ROS Topic Publishers
   ros::Publisher joint_states_pub;
@@ -68,7 +70,7 @@ class Turtlebot3Fake
   nav_msgs::Odometry odom;
   tf::TransformBroadcaster tf_broadcaster;
 
-  double wheel_speed_cmd_[2];
+  double wheel_speed_cmd[2];
   double goal_linear_velocity;
   double goal_angular_velocity;
   double cmd_vel_timeout;
@@ -82,7 +84,7 @@ class Turtlebot3Fake
   double last_position[2];
   double last_velocity[2];
 
-  double wheel_seperation;
+  double wheel_separation;
   double turning_radius;
   double robot_radius;
 
@@ -93,4 +95,4 @@ class Turtlebot3Fake
   void updateTF(geometry_msgs::TransformStamped& odom_tf);
 };
 
-#endif // TURTLEBOT3_FAKE_H_
+#endif // TURTLEBOT3_UPFRONT_H_
