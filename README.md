@@ -1,5 +1,5 @@
 # turtlebot3_burger
 Working on ROS with Turtlebot3(burger)
 
-The work done is in reference to :
+Referred to hardware description code from :
 https://github.com/ROBOTIS-GIT
