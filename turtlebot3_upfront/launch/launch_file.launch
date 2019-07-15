@@ -1,8 +1,7 @@
 <launch>
 
-  <node pkg="turtlebot3_upfront" type="odom" name="pub_odom" />
+  <node pkg="turtlebot3_upfront" type="turtlebot3_upfront" name="turtlebot3_upfront" />
 
-  <node pkg="learning_tf" type="turtle_tf_listener"
-          name="listener" />
-
+  <!--<node pkg="learning_tf" type="turtle_tf_listener"
+          name="listener" />-->
 </launch>
